@@ -10,13 +10,23 @@ module.exports = {
     context: APP,
     entry: {  
     	app: ['webpack/hot/dev-server', './core/bootstrap.js'],
-        vendor: ['./core/vendor.js']
+        vendors: ['./core/vendor.js']
   	},
   	output: {
-        path: APP,
+        path: DIST,
         filename: 'bundle.js'
     },
 	plugins: [  
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings: true
+            }
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
@@ -24,7 +34,7 @@ module.exports = {
     	new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
   	],
-    devtool: "cheap-eval-source-map",
+    devtool: "cheap-module-source-map",
     module: {
         loaders: [
             {
