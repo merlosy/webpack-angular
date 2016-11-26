@@ -1,7 +1,7 @@
-
 class TodoConfig {
 
     constructor($stateProvider){
+        'ngInject';
         $stateProvider.state('todo', {
             url: '/todo-list',
             views: {
@@ -16,4 +16,4 @@ class TodoConfig {
 
 }
 
-export {TodoConfig};
+export { TodoConfig };

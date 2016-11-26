@@ -1,4 +1,4 @@
-import TodoModule from './todo/todo';
+import { TodoModule } from './todo/todo';
 
 angular.module('app', [
 	'ui.router',
@@ -7,13 +7,13 @@ angular.module('app', [
 .config(AppConfig);
 
 // default params
-function printMessage (status='working') {  
+function printMessage (status='working') {
 	// let
-  	let message = 'ES6';                    
-	// template string           
-  	console.log(`${message} is ${status}`);    
+  	let message = 'ES6';
+	// template string
+  	console.log(`${message} is ${status}`);
 }
-printMessage(); 
+printMessage();
 
 AppConfig.$inject=['$locationProvider', '$urlRouterProvider'];
 function AppConfig($locationProvider, $urlRouterProvider){

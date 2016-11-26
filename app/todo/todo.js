@@ -1,5 +1,4 @@
 import { TodoController } from './todo.controller';
-import { TodoConfig } from './todo.config';
 
 export const TodoModule = angular
     .module('todos', [
@@ -10,16 +9,16 @@ export const TodoModule = angular
     .name;
  
 
-// TodoConfig.$inject=['$stateProvider'];
-// function TodoConfig($stateProvider){
-// 	$stateProvider.state('todo', {
-//         url: '/todo-list',
-//         views: {
-//             '': {
-//                 controller: 'TodoController',
-//                 controllerAs: '$ctrl',
-//                 template: `<p>{{$ctrl.message}}</p>`
-//             }
-//         }
-//     });
-// }
+TodoConfig.$inject=['$stateProvider'];
+function TodoConfig($stateProvider){
+	$stateProvider.state('todo', {
+        url: '/todo-list',
+        views: {
+            '': {
+                controller: 'TodoController',
+                controllerAs: '$ctrl',
+                template: `<p>{{$ctrl.message}}</p>`
+            }
+        }
+    });
+}
