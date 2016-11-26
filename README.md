@@ -3,6 +3,6 @@
 [![Dependency Status](https://david-dm.org/merlosy/webpack-angular.svg)](https://david-dm.org/merlosy/webpack-angular)
 
 - Webpack
-- Angular 1.4.x
+- Angular 1.5.x
 - Bootstrap 3.3.x
 - Babel transpiler
