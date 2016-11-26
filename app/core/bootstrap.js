@@ -1,12 +1,14 @@
-// import vendors
-import './vendor';
+/*jshint browser:true */
+'use strict';  
 
-// app 
-import '../index.scss';
-import '../index'; 
-
+require('./vendor')();
+require('./app')();
+ 
+// load the main app file
+var appModule = require('../index');  
+// replaces ng-app="appName"
 angular.element(document).ready(function () {  
-	angular.bootstrap(document, ['app'], {
+	angular.bootstrap(document, [appModule.name], {
 	//strictDi: true
 	});
 });

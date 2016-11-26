@@ -6,6 +6,3 @@
 - Angular 1.5.x
 - Bootstrap 3.3.x
 - Babel transpiler
-
-https://github.com/toddmotto/angular-styleguide
-
