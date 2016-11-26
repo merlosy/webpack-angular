@@ -1,6 +1,10 @@
-import angular from 'angular';
+import TodoModule from './todo/todo';
 
-module.exports = angular.module('app', []);
+angular.module('app', [
+	'ui.router',
+	TodoModule
+])
+.config(AppConfig);
 
 // default params
 function printMessage (status='working') {  
@@ -11,8 +15,11 @@ function printMessage (status='working') {
 }
 printMessage(); 
 
-// AppConfig.$inject=['$locationProvider', '$urlRouterProvider'];
-// function AppConfig($locationProvider, $urlRouterProvider){
-// 	$locationProvider.html5Mode(true);
-//   	$urlRouterProvider.otherwise('/');
-// }
+AppConfig.$inject=['$locationProvider', '$urlRouterProvider'];
+function AppConfig($locationProvider, $urlRouterProvider){
+	// $locationProvider.html5Mode({
+	// 	enabled: true,
+	// 	requireBase: false
+	// });
+  	$urlRouterProvider.otherwise('/todo-list');
+}
