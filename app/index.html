@@ -10,8 +10,11 @@
 			<div class="container info">
 				<p>Angular is working: {{1 + 1 === 2}}</p>
 				<p>Bootstrap is working: <span class="glyphicon glyphicon-ok"></span></p>  
+				<div>
+					<a class="btn btn-default" ui-sref="home">Home</a>
+					<a class="btn btn-default" ui-sref="todos">Todos</a>
+				</div>
 			</div>
-
 			<div class="container" ui-view></div>
 		</main>
 		

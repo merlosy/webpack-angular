@@ -1,24 +1,24 @@
-import { TodoController } from './todo.controller';
+import { TodoComponent } from './todo.component';
+import { TodoService } from './todo.service';
+import uiRouter from 'angular-ui-router';
 
 export const TodoModule = angular
     .module('todos', [
-        'ui.router'
+        uiRouter
     ])
     .config(TodoConfig)
-    .controller('TodoController', TodoController)
+    .component('todo', TodoComponent)
+    .service('TodoService', TodoService)
     .name;
  
 
-TodoConfig.$inject=['$stateProvider'];
 function TodoConfig($stateProvider){
-	$stateProvider.state('todo', {
-        url: '/todo-list',
-        views: {
-            '': {
-                controller: 'TodoController',
-                controllerAs: '$ctrl',
-                template: `<p>{{$ctrl.message}}</p>`
-            }
+    'ngInject';
+	$stateProvider.state('todos', {
+        url: '/todos',
+        component: 'todo',
+        resolve: {
+          todoData: TodoService => TodoService.getTodos()
         }
     });
 }

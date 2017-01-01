@@ -1,29 +1,29 @@
-'use strict';  
+'use strict';
 
-var webpack = require('webpack'),  
+var webpack = require('webpack'),
     path = require('path');
 
 var APP = path.resolve(__dirname, 'app');
 var DIST = path.resolve(__dirname, 'dist');
 
-module.exports = {  
+module.exports = {
     context: APP,
-    entry: {  
-    	app: ['webpack/hot/dev-server', './core/bootstrap.js'],
+    entry: {
+        app: ['webpack/hot/dev-server', './core/bootstrap.js'],
         vendor: ['./core/vendor.js']
-  	},
-  	output: {
+    },
+    output: {
         path: APP,
         filename: 'bundle.js'
     },
-	plugins: [  
+    plugins: [
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
         }),
-    	new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
-  	],
+    ],
     devtool: "cheap-eval-source-map",
     module: {
         loaders: [
@@ -35,9 +35,13 @@ module.exports = {
                 test: /\.css$/,
                 loader: 'style!css'
             },
+            {
+                test: /\.html$/,
+                loader: 'html'
+            },
             // bootstrap files loader
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-            { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+            { test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
             // for angular ES6 files
@@ -48,5 +52,5 @@ module.exports = {
             }
         ]
     }
-    
+
 }

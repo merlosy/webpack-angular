@@ -1,7 +1,9 @@
 import { TodoModule } from './todo/todo';
+import uiRouter from 'angular-ui-router';
+import homeTemplate from './home.html';
 
 angular.module('app', [
-	'ui.router',
+	uiRouter,
 	TodoModule
 ])
 .config(AppConfig);
@@ -15,11 +17,23 @@ function printMessage (status='working') {
 }
 printMessage();
 
-AppConfig.$inject=['$locationProvider', '$urlRouterProvider'];
-function AppConfig($locationProvider, $urlRouterProvider){
-	// $locationProvider.html5Mode({
-	// 	enabled: true,
-	// 	requireBase: false
-	// });
-  	$urlRouterProvider.otherwise('/todo-list');
+/**
+ * @see http://stackoverflow.com/questions/34932972/angular-ui-routers-nested-routes-not-working-in-es6-with-bable
+ * @see https://github.com/angular-ui/ui-router/issues/2547
+ */
+function AppConfig($locationProvider, $urlRouterProvider, $stateProvider){
+	'ngInject';
+	$stateProvider.state('home', {
+        url: '/',
+		views: {
+			'':{
+				template: homeTemplate
+			}
+		}
+    });
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
+  	$urlRouterProvider.otherwise('/');
 }
